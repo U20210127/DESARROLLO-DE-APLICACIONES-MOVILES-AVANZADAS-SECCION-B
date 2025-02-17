@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Tabs</string>
+    <string name="quien_soy">Quién Soy</string>
+    <string name="que_estudio">Qué Estudio</string>
+    <string name="tecnologias">Tecnologías</string>
+</resources>

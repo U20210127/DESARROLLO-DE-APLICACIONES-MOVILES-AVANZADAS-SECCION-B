@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Doctor App</string>
+    <string name="specialist">Especialistas</string>
+    <string name="view_all">Ver todo</string>
+    <string name="book_now">Reservar ahora</string>
+    <string name="call_now">Llamar Ahora</string>
+    <string name="send_whatsapp">Enviar WhatsApp</string>
+    <string name="about">Acerca de</string>
+    <string name="email">Correo</string>
+    <string name="phone">Teléfono</string>
+    <string name="filter">Filtrar</string>
+</resources>

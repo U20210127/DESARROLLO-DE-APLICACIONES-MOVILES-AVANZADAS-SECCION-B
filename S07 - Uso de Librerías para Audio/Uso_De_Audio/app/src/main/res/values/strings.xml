@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Uso_De_Audio</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Español</item>
+    </string-array>
+</resources>

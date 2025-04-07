@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificador Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container input, .container button {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+        .success {
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Notificador Web</h2>
+        <input type="text" id="subject" placeholder="Asunto">
+        <input type="text" id="message" placeholder="Mensaje">
+        <button onclick="sendNotification()">Enviar Notificación</button>
+        <p class="error" id="error">Por favor, complete ambos campos.</p>
+        <p class="success" id="success">Notificación enviada con éxito.</p>
+    </div>
+
+    <script>
+        function sendNotification() {
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const errorElement = document.getElementById('error');
+            const successElement = document.getElementById('success');
+
+            if (!subject || !message) {
+                errorElement.style.display = 'block';
+                successElement.style.display = 'none';
+                return;
+            }
+
+            errorElement.style.display = 'none';
+
+            fetch('/send-notification', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ subject, message }),
+            })
+            .then(response => response.text())
+            .then(data => {
+                successElement.style.display = 'block';
+                console.log('Respuesta del servidor:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

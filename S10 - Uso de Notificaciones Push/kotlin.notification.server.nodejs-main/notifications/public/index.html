@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificador Web</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6200EA, #3700B3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .notification {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+        }
+        
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+        }
+        
+        #tokenInput {
+            background-color: #f9f9f9;
+            color: #666;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .opcional {
+            color: #888;
+            font-size: 12px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Notificador Web</h1>
+        </header>
+        
+        <div class="card">
+            <div class="form-group">
+                <label for="asuntoInput">Asunto <span class="requerido">*</span></label>
+                <input type="text" id="asuntoInput" placeholder="Ingrese el asunto de la notificación">
+            </div>
+            
+            <div class="form-group">
+                <label for="mensajeInput">Mensaje <span class="requerido">*</span></label>
+                <textarea id="mensajeInput" placeholder="Escriba el mensaje para la notificación"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="tokenInput">Token de dispositivo específico <span class="opcional">(opcional)</span></label>
+                <input type="text" id="tokenInput" placeholder="Ingrese un token de dispositivo específico (opcional)">
+            </div>
+            
+            <button id="enviarBtn">Enviar Notificación</button>
+        </div>
+        
+        <div id="notificacionExito" class="notification success">
+            Notificación enviada correctamente.
+        </div>
+        
+        <div id="notificacionError" class="notification error">
+            Error al enviar la notificación. Verifique los campos requeridos.
+        </div>
+
+        <footer>
+            © 2025 Notificaciones Push - Todos los derechos reservados
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const enviarBtn = document.getElementById('enviarBtn');
+            const asuntoInput = document.getElementById('asuntoInput');
+            const mensajeInput = document.getElementById('mensajeInput');
+            const tokenInput = document.getElementById('tokenInput');
+            const notificacionExito = document.getElementById('notificacionExito');
+            const notificacionError = document.getElementById('notificacionError');
+            
+
+            notificacionExito.style.display = 'none';
+            notificacionError.style.display = 'none';
+            
+            enviarBtn.addEventListener('click', function() {
+
+                if (!asuntoInput.value.trim() || !mensajeInput.value.trim()) {
+                    notificacionError.textContent = 'Error: El asunto y el mensaje son campos requeridos.';
+                    notificacionError.style.display = 'block';
+                    notificacionExito.style.display = 'none';
+                    
+
+                    if (!asuntoInput.value.trim()) {
+                        asuntoInput.style.borderColor = '#c62828';
+                    } else {
+                        asuntoInput.style.borderColor = '#ddd';
+                    }
+                    
+                    if (!mensajeInput.value.trim()) {
+                        mensajeInput.style.borderColor = '#c62828';
+                    } else {
+                        mensajeInput.style.borderColor = '#ddd';
+                    }
+                    
+                    return;
+                }
+                
+
+                asuntoInput.style.borderColor = '#ddd';
+                mensajeInput.style.borderColor = '#ddd';
+                
+
+                const datos = {
+                    titulo: asuntoInput.value.trim(),
+                    mensaje: mensajeInput.value.trim()
+                };
+                
+
+                if (tokenInput.value.trim()) {
+                    datos.token = tokenInput.value.trim();
+                }
+                
+
+                enviarBtn.disabled = true;
+                enviarBtn.textContent = 'Enviando...';
+                
+
+                fetch('/api/send-notification', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datos)
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    enviarBtn.disabled = false;
+                    enviarBtn.textContent = 'Enviar Notificación';
+                    
+                    if (data.success) {
+
+                        notificacionExito.textContent = 'Notificación enviada correctamente.';
+                        notificacionExito.style.display = 'block';
+                        notificacionError.style.display = 'none';
+                        
+
+                        asuntoInput.value = '';
+                        mensajeInput.value = '';
+
+                    } else {
+
+                        notificacionError.textContent = `Error: ${data.message}`;
+                        notificacionError.style.display = 'block';
+                        notificacionExito.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    notificacionError.textContent = 'Error al conectar con el servidor. Intente nuevamente.';
+                    notificacionError.style.display = 'block';
+                    notificacionExito.style.display = 'none';
+                    
+
+                    enviarBtn.disabled = false;
+                    enviarBtn.textContent = 'Enviar Notificación';
+                });
+            });
+            
+            asuntoInput.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '#ddd';
+                }
+            });
+            
+            mensajeInput.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '#ddd';
+                }
+            });
+
+
+            asuntoInput.addEventListener('focus', function() {
+                notificacionExito.style.display = 'none';
+                notificacionError.style.display = 'none';
+            });
+
+            mensajeInput.addEventListener('focus', function() {
+                notificacionExito.style.display = 'none';
+                notificacionError.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

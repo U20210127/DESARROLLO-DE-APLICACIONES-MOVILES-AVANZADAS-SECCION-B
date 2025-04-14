@@ -12,3 +12,4 @@ function mostrarError($mensaje, $codigo) {
     exit; // Terminar ejecución
 }
 ?>
+

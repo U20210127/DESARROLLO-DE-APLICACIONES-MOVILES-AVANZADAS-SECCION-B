@@ -1,0 +1,9 @@
+<!-- res/menu/toolbar_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/ic_notification"
+        android:title="Notificaciones"
+        app:showAsAction="ifRoom" />  <!-- Mostrar si hay espacio disponible -->
+</menu>

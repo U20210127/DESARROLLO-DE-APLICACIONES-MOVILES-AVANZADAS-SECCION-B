@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        android:title="Dashboard"
+        android:titleTextColor="?attr/colorOnSurface"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+
+
+    <!-- Contenedor principal debajo del Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <!-- Cabecera fija (resumen y tarjetas) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="?attr/colorSurface">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resumen De Incidencias"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/totalResumenTextView"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_background"
+                android:gravity="center"
+                android:text="453\nTotal incidencias"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="2"
+                android:alignmentMode="alignMargins"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <TextView
+                    android:id="@+id/tvresueltos"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_green"
+                    android:text="13\nEn proceso"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/tvactivos"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_red"
+                    android:text="5\nPendiente"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/solucionado"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_green"
+                    android:text="10\nSolucionada"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/aplazado"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_red"
+                    android:text="13\nAplazada"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/revisado"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_yellow"
+                    android:text="17\nRevisada"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <TextView
+                    android:id="@+id/eliminado"
+                    style="@style/IncidenceCard"
+                    android:background="@drawable/rounded_red"
+                    android:text="0\nEliminada"
+                    android:textColor="?attr/colorOnSurface" />
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incidencias recibidas"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginTop="24dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView con scroll propio -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/incidenciasRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="?attr/colorSurface"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

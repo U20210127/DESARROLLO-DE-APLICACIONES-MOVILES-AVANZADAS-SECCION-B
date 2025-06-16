@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#A1D0FA"
+    android:padding="16dp">
+
+
+    <!-- Icono de luna para toggle -->
+    <ImageView
+        android:id="@+id/img_toggle_theme"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:contentDescription="@string/app_name"
+        android:focusable="true"
+        android:padding="4dp"
+        android:src="@drawable/img_8"
+        app:tint="?attr/colorOnSurface"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <!-- Contenedor vertical centrado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Contenedor circular para imagen -->
+        <FrameLayout
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/circular_background" />
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_background"
+                android:contentDescription="@string/avatar"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="Nombre de Usuario"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/user_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:text="Rol del Usuario"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</RelativeLayout>

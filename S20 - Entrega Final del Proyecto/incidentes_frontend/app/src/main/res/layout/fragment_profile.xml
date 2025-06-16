@@ -1,0 +1,161 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Parte superior con fondo morado y borde curvado -->
+    <RelativeLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="#A1D0FA"
+        android:fitsSystemWindows="true"
+        android:paddingTop="40dp"
+        android:paddingBottom="80dp">
+
+        <!-- Imagen de perfil -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp">
+
+                <ImageView
+                    android:id="@+id/imageProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circle_background"
+                    android:contentDescription="Foto"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img" />
+
+                <ImageView
+                    android:id="@+id/iconCamera"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/circle_background_small"
+                    android:contentDescription="Cambiar foto"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_camera" />
+            </FrameLayout>
+
+            <!-- Estado -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="● Online"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Contenido inferior estilizado -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerContainer"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        android:backgroundTint="?attr/colorSurface">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textName"
+                android:text="Stiven Castillo"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textRole"
+                android:text="Administrador"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/colorOutline"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textEmail"
+                android:text="me@stiven.dev"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textLocation"
+                android:text="Colombia - Cali"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textPhone"
+                android:text="+57 987 654321"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+               android:visibility="gone"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/transportBike"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/img"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Botón flotante para editar imagen -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:contentDescription="Editar imagen"
+        android:src="@drawable/ic_editar"
+        android:visibility="visible"
+        app:backgroundTint="#4CAF50"
+        app:tint="@android:color/white" />
+</RelativeLayout>

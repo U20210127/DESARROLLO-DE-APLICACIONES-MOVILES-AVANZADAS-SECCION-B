@@ -1,0 +1,96 @@
+# =========================
+# PARA PROYECTO ANDROID
+# =========================
+*.iml
+.gradle/
+local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build/
+/captures/
+/output.json
+
+# Archivos de configuración de Android Studio
+.idea/
+
+# Build outputs
+*/build/
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+
+# NDK
+obj/
+
+# Signing keys
+*.jks
+*.keystore
+
+# Google Services (si usas Firebase)
+google-services.json
+
+# =========================
+# PARA BACKEND PHP
+# =========================
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Archivos de caché
+cache/
+tmp/
+logs/
+
+# Configuración sensible
+.env
+.env.*
+config.php
+db.php
+
+# Archivos de bases de datos locales (si están en el proyecto)
+*.sql
+*.sqlite
+*.db
+
+# Archivos del sistema
+Thumbs.db
+Desktop.ini
+
+# =========================
+# PARA GIT EN GENERAL
+# =========================
+# Archivos de sistema operativo
+.DS_Store
+ehthumbs.db
+Icon?
+__MACOSX/
+
+# Archivos de backup
+*.bak
+*.old
+*.orig
+*.save
+
+# Archivos de editor
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+*.idea/
+
+# NodeJS (por si usas en algún script)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Composer (si llegas a usar PHP con Composer)
+vendor/
+composer.lock

@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_generate_report"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Agrupar RadioButtons en un RadioGroup -->
+    <RadioGroup
+        android:id="@+id/rg_tipo_reporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb_reportes_activos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reportes Activos" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rb_reportes_resueltos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reportes Resueltos" />
+    </RadioGroup>
+
+    <!-- Opción PDF -->
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cb_pdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exportar como PDF"
+        android:checked="true" />
+
+</LinearLayout>
+
